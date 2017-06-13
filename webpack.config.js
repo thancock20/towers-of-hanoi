@@ -10,6 +10,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "dist")
   },
+  devtool: 'eval-source-map',
   module: {
     rules: [
       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
