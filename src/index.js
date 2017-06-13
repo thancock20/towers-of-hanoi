@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import './main.styl';
 import hanoi from './hanoi';
 import animate from './animate';
