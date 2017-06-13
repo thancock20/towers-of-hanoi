@@ -8,7 +8,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   devServer: {
-    contentBase: path.join(__dirname, "dist")
+    watchContentBase: true
   },
   devtool: 'eval-source-map',
   module: {
@@ -25,9 +25,4 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new CopyWebpackPlugin([
-      { from: 'src/index.html' }
-    ])
-  ]
 };
