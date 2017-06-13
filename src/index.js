@@ -1,1 +1,1 @@
-require('./main.styl');
+import './main.styl';
