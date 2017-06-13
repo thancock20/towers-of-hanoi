@@ -16,6 +16,7 @@
     "babel-loader": "^7.0.0",
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.5.2",
+    "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
     "style-loader": "^0.18.2",
     "stylus": "^0.54.5",
