@@ -3471,36 +3471,81 @@ var _animate2 = _interopRequireDefault(_animate);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var i = 0;
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelector('input[name="number"]').oninput = changeEventHandler;
+}, false);
 
-var _loop = function _loop(move) {
-  var tick = function tick() {
-    (0, _animate2.default)(move);
-  };
-  setTimeout(tick, 500 * i++);
-};
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelector('button[name="start"]').onclick = startEventHandler;
+}, false);
 
-var _iteratorNormalCompletion = true;
-var _didIteratorError = false;
-var _iteratorError = undefined;
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelector('button[name="reset"]').onclick = location.reload.bind(location, true);
+});
 
-try {
-  for (var _iterator = (0, _hanoi2.default)(5)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-    var move = _step.value;
+function changeEventHandler(event) {
+  var discs = event.target.value;
 
-    _loop(move);
-  }
-} catch (err) {
-  _didIteratorError = true;
-  _iteratorError = err;
-} finally {
-  try {
-    if (!_iteratorNormalCompletion && _iterator.return) {
-      _iterator.return();
+  for (var i = 1; i <= 10; i++) {
+    var AElement = document.querySelector('#peg-A>.disc-' + i);
+    var BElement = document.querySelector('#peg-B>.disc-' + i);
+    var CElement = document.querySelector('#peg-C>.disc-' + i);
+
+    var AClasses = AElement.classList;
+    var BClasses = BElement.classList;
+    var CClasses = CElement.classList;
+
+    if (i <= discs) {
+      AClasses.remove('invisible-disc');
+      BClasses.remove('invisible-disc');
+      CClasses.remove('invisible-disc');
+    } else {
+      AClasses.add('invisible-disc');
+      BClasses.add('invisible-disc');
+      CClasses.add('invisible-disc');
     }
+  }
+}
+
+function startEventHandler(event) {
+  var discsElement = document.querySelector('input[name="number"]');
+
+  this.disabled = true;
+  discsElement.disabled = true;
+
+  var discs = discsElement.value;
+
+  var i = 0;
+
+  var _loop = function _loop(move) {
+    var tick = function tick() {
+      (0, _animate2.default)(move);
+    };
+    setTimeout(tick, 500 * i++);
+  };
+
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = (0, _hanoi2.default)(discs)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var move = _step.value;
+
+      _loop(move);
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
   } finally {
-    if (_didIteratorError) {
-      throw _iteratorError;
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
     }
   }
 }
@@ -7610,7 +7655,7 @@ exports = module.exports = __webpack_require__(301)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  margin: 0;\n}\nh1 {\n  text-align: center;\n}\n.container {\n  display: flex;\n  height: 45vh;\n  justify-content: space-between;\n  margin: 0 auto;\n  width: 95vw;\n}\n.peg {\n  align-items: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 30vw;\n}\n.unselected-disc {\n  background-color: #eee;\n}\n.selected-disc {\n  background-color: #e46119;\n}\n.disc-1 {\n  height: 3vh;\n  width: 3vw;\n}\n.disc-2 {\n  height: 3vh;\n  width: 6vw;\n}\n.disc-3 {\n  height: 3vh;\n  width: 9vw;\n}\n.disc-4 {\n  height: 3vh;\n  width: 12vw;\n}\n.disc-5 {\n  height: 3vh;\n  width: 15vw;\n}\n.disc-6 {\n  height: 3vh;\n  width: 18vw;\n}\n.disc-7 {\n  height: 3vh;\n  width: 21vw;\n}\n.disc-8 {\n  height: 3vh;\n  width: 24vw;\n}\n.disc-9 {\n  height: 3vh;\n  width: 27vw;\n}\n.disc-10 {\n  height: 3vh;\n  width: 30vw;\n}\n", ""]);
+exports.push([module.i, "body {\n  margin: 0;\n}\nh1 {\n  text-align: center;\n}\nform {\n  margin-bottom: 20px;\n  text-align: center;\n}\nform input,\nform button {\n  border-radius: 5px;\n  height: 30px;\n  width: 60px;\n}\n.container {\n  display: flex;\n  height: 30vmin;\n  justify-content: space-between;\n  margin: 0 auto;\n  width: 95vmin;\n}\n.peg {\n  align-items: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 30vw;\n}\n.unselected-disc {\n  background-color: #eee;\n}\n.selected-disc {\n  background-color: #e46119;\n}\n.invisible-disc {\n  visibility: hidden;\n}\n.disc-1 {\n  height: 2vmin;\n  border-radius: 20px;\n  width: 3vmin;\n}\n.disc-2 {\n  height: 2vmin;\n  border-radius: 20px;\n  width: 6vmin;\n}\n.disc-3 {\n  height: 2vmin;\n  border-radius: 20px;\n  width: 9vmin;\n}\n.disc-4 {\n  height: 2vmin;\n  border-radius: 20px;\n  width: 12vmin;\n}\n.disc-5 {\n  height: 2vmin;\n  border-radius: 20px;\n  width: 15vmin;\n}\n.disc-6 {\n  height: 2vmin;\n  border-radius: 20px;\n  width: 18vmin;\n}\n.disc-7 {\n  height: 2vmin;\n  border-radius: 20px;\n  width: 21vmin;\n}\n.disc-8 {\n  height: 2vmin;\n  border-radius: 20px;\n  width: 24vmin;\n}\n.disc-9 {\n  height: 2vmin;\n  border-radius: 20px;\n  width: 27vmin;\n}\n.disc-10 {\n  height: 2vmin;\n  border-radius: 20px;\n  width: 30vmin;\n}\n", ""]);
 
 // exports
 
