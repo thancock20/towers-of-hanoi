@@ -28,7 +28,11 @@ h1
 .selected-disc
   background-color: $selected-disc
 
+.invisible-disc
+  visibility: hidden
+
 for num in (1..10)
   .disc-{num}
-    height: 3vh
-    width: num * 3vw
+    height: 2vmin
+    border-radius: 20px
+    width: num * 3vmin
